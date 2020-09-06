@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Packages
-sudo pacman -S zsh git neovim autojump
+sudo pacman -S zsh neovim autojump
 
 # oh-my-zsh installation
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
