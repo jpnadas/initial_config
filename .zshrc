@@ -1,10 +1,7 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
-export ZSH="/home/jpnadas/.oh-my-zsh"
-
+export ZSH="~/.oh-my-zsh"
 export TERM="xterm-256color"
+export PATH=$PATH:.
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -52,8 +49,8 @@ SPACESHIP_DOCKER_SHOW=false
 SPACESHIP_DOCKER_CONTEXT_SHOW=false
 SPACESHIP_AWS_SHOW=false
 SPACESHIP_CONDA_SHOW=false
-SPACESHIP_VENV_SHOW=false
-SPACESHIP_PYENV_SHOW=false
+SPACESHIP_VENV_SHOW=true
+SPACESHIP_PYENV_SHOW=true
 SPACESHIP_DOTNET_SHOW=false
 SPACESHIP_EMBER_SHOW=false
 SPACESHIP_KUBECONTEXT_SHOW=false
@@ -61,41 +58,30 @@ SPACESHIP_TERRAFORM_SHOW=false
 SPACESHIP_TERRAFORM_SHOW=false
 SPACESHIP_VI_MODE_SHOW=false
 SPACESHIP_JOBS_SHOW=false
+SPACESHIP_GCLOUD_SHOW=false
+SPACESHIP_KUBECTL_SHOW=true
+SPACESHIP_KUBECTL_VERSION_SHOW=false
+SPACESHIP_KUBECONTEXT_SHOW=true
+SPACESHIP_KUBECTL_SYMBOL=""
 
 plugins=(
 	git 
-    alias-tips
+	alias-tips
 	autojump
 	zsh-autosuggestions
-    zsh-syntax-highlighting
-    pass
-#	keychain
+	zsh-syntax-highlighting
+	pass
+    zsh-django
+    kubectl
 )
-#zstyle :omz:plugins:keychain agents gpg,ssh
-#zstyle :omz:plugins:keychain identities id_rsa
-#zstyle :omz:plugins:keychain options --quiet
 
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -115,17 +101,9 @@ bindkey -v
 export KEYTIMEOUT=1
 bindkey -M vicmd '?' history-incremental-search-backward
 
-# AWS REGION
-export AWS_REGION=eu-central-1
-export OPENCV_LOG_LEVEL=ERROR
+# Alias for django shell plus
+alias djsp="manage.py shell_plus --ipython"
 
-# Aliases to run scp
-alias mb="make build"
-alias mds="make docker-start"
-alias mdrs="make docker-runserver"
-alias mdrd="make docker-rundramatiq"
-alias mdrc="make docker-runcelery-debug"
-alias mdssh="make docker-ssh"
+alias helm3=helm
 
-# Alias for git checkout local branches
-alias glb=dmenu_branch
+alias gdh="git diff HEAD^"
